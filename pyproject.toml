@@ -1,0 +1,13 @@
+[project]
+name = "youtube"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "grog>=0.93",
+    "groq>=1.1.1",
+    "psycopg2>=2.9.11",
+    "psycopg2-binary>=2.9.11",
+]
