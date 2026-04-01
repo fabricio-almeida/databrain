@@ -12,6 +12,13 @@ Hoje o fluxo principal funciona assim:
 2. Um modelo da Groq gera a consulta SQL com base no contexto do banco.
 3. A aplicação executa a query no PostgreSQL.
 4. Outro passo com LLM transforma os dados em uma resposta mais amigável.
+<br>
+
+Fluxo do projeto:
+<br>
+
+<img width="1890" height="870" alt="Captura de tela 2026-04-01 105843" src="https://github.com/user-attachments/assets/59eb4d06-2a56-4c55-9a4d-84febc27485e" />
+
 
 ## Estrutura atual
 
