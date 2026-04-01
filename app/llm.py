@@ -184,7 +184,8 @@ def agente_analista(pergunta, dados):
 
             Dado a seguinte pergunta: {pergunta} e os dados {dados}, responda com uma análise suscinta, clara e objetiva.
             1 - Exiba os dados em formato de tabela, se possível, para facilitar a leitura.
-            2 - Seja direto e evite explicações desnecessárias.
+            2 - Descreva os insights mais relevantes de forma direta, sem rodeios.
+            3 - Seja direto e evite explicações desnecessárias.
             ''',
             }
         ],
@@ -213,13 +214,13 @@ if __name__ == "__main__":
         print(f"\nConsulta SQL gerada: \n {sql}")
         
         sql_limpo = limpa_sql(sql)
-        
+         
         print("__________________________________________________________________________________________________") 
         dados = consulta_banco(sql_limpo)
         print("\nResposta do banco de dados:\n")    
         for linha in dados:
             print(linha)
-        
+            
         print("__________________________________________________________________________________________________")    
         analise = agente_analista(pergunta, dados)
         print("\nAnálise dos dados:\n")
