@@ -28,4 +28,5 @@ dist/
 .vscode/
 
 # Projeto local
+.codex
 .codex/
