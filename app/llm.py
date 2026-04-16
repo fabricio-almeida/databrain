@@ -169,7 +169,7 @@ def agente_dba(pergunta):
         ],
     )
 
-    return completion.choices[0].message.content
+    return completion.choices[0].message.content 
 
 
 
@@ -195,6 +195,30 @@ def agente_analista(pergunta, dados):
     return completion.choices[0].message.content
 
 
+# Função para realizar a classificação da interação do usuario
+def agente_roteamento(pergunta):
+    completion = client.chat.completions.create(
+        model="llama-3.1-8b-instant",
+        messages=[
+            {
+                "role": "user",
+                "content": f''' Você é um agente especializado em categorizar conversas. Seu trabalho é receber uma interação e definir se ela deve ser categorizada como chat ou query.
+                
+                1 - Interações como saudações você poder categorizar como *chat* e responder.
+                2 - Interações que sugiram analises de dados ou consultas a banco de dados você deve categorizar como *query*
+                3 - Responda apenas 1 palavra, chat ou query
+                4 - Não coloque comentarios ou frases além da palavra de classificação
+                           
+                Essa é a interação: {pergunta}
+            ''',
+            }
+        ],
+        
+    )
+
+    return completion.choices[0].message.content
+
+
 # Função para limpar a consulta SQL gerada, removendo quebras de linha, acentos e caracteres indesejados
 def limpa_sql(sql):
     return sql.replace("\n", " ").replace("```", "").replace("sql", "").replace(";", "").replace("'", "").strip()
@@ -208,7 +232,16 @@ if __name__ == "__main__":
         print("__________________________________________________________________________________________________") 
         print("\n#### Bem-vindo ao sistema de consulta de vendas! Digite 'sair' para encerrar. ####") 
         pergunta = input("\nDigite sua pergunta: ")
-        #pergunta = 'Qual o total de vendas por ano?'
+
+        if pergunta == "sair".lower():
+            print("Valeu, até a proxima!")
+            break
+        
+        classicacao = agente_roteamento(pergunta)
+        print(f"\nClassificação: {classicacao}")
+        
+        if classicacao != "query":
+            continue
         
         sql = agente_dba(pergunta)
         print(f"\nConsulta SQL gerada: \n {sql}")
@@ -226,4 +259,3 @@ if __name__ == "__main__":
         print("\nAnálise dos dados:\n")
         print(analise)
 
-adsdkjalkdjalkdjaskldjaskdlj
