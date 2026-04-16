@@ -225,3 +225,5 @@ if __name__ == "__main__":
         analise = agente_analista(pergunta, dados)
         print("\nAnálise dos dados:\n")
         print(analise)
+
+adsdkjalkdjalkdjaskldjaskdlj
