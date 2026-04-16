@@ -238,10 +238,10 @@ if __name__ == "__main__":
             break
         
         classicacao = agente_roteamento(pergunta)
-        #print(f"\nClassificação: {classicacao}")
+        print(f"\nClassificação: {classicacao}")
         
         if classicacao != "query":
-            print("\nMeu trabalho é analisar dados e não bater papo, favo uma nova pergunta!")
+            print("\nMeu trabalho é analisar dados e não bater papo, favor uma nova pergunta!")
             continue
         
         sql = agente_dba(pergunta)
